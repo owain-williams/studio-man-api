@@ -14,7 +14,7 @@ class Engineer:
     Rate: Decimal
 
     def setrate(self, rate: Decimal) -> None:
-        '''Set the engineer's rate.'''
+        """Set the engineer's rate."""
         cursor.execute("UPDATE Engineers SET Rate=%s WHERE EngineerID=%s",
                        (rate, self.EngineerID))
         db.commit()
@@ -22,7 +22,7 @@ class Engineer:
         print(f'Engineer {self.FirstName} {self.LastName} rate set to {rate}')
 
     def commit(self) -> None:
-        '''Add or update the engineer in the database.'''
+        """Add or update the engineer in the database."""
         if self.EngineerID is None:
             cursor.execute(
                 "INSERT INTO Engineers (FirstName, LastName, Rate) VALUES (%s, %s, %s)",
@@ -42,7 +42,7 @@ class Engineer:
                 f'Engineer "{self.FirstName} {self.LastName}" updated. ID: {self.EngineerID}')
 
     def delete(self) -> None:
-        '''Delete the engineer from the database.'''
+        """Delete the engineer from the database."""
         cursor.execute("DELETE FROM Engineers WHERE EngineerID=%s",
                        (self.EngineerID,))
         db.commit()
@@ -50,13 +50,24 @@ class Engineer:
 
 
 def getallengineers() -> list[Engineer]:
-    '''Get all engineers from the database.'''
+    """Get all engineers from the database.
+
+    Returns:
+        list[Engineer]: A list of all engineers in the database.
+    """    
     cursor.execute("SELECT * FROM Engineers")
     return [Engineer(*engineer) for engineer in cursor.fetchall()]
 
 
 def getengineerbyid(engineerid: int) -> Engineer:
-    '''Get an engineer from the database.'''
+    """Get an engineer from the database.
+    
+    Parameters:
+        engineerid (int): The ID of the engineer to get.
+
+    Returns:
+        Engineer: _description_
+    """    
     cursor.execute(
         "SELECT * FROM Engineers WHERE EngineerID=%s", (engineerid,))
     return Engineer(*cursor.fetchone())

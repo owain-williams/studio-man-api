@@ -30,6 +30,7 @@ def test_readengineer():
 
 
 def test_updateengineer():
+    '''Test updating an engineer.'''
     # create an engineer
     test_engineer = Engineer(None, 'John', 'Doe', 123.45)
     # commit the engineer
@@ -51,6 +52,7 @@ def test_updateengineer():
 
 
 def test_deleteengineer():
+    '''Test deleting an engineer.'''
     # create an engineer
     test_engineer = Engineer(None, 'John', 'Doe', 123.45)
     # commit the engineer
@@ -63,6 +65,7 @@ def test_deleteengineer():
 
 
 def test_setengineerrate():
+    '''Test setting an engineer's rate.'''
     # create an engineer
     test_engineer = Engineer(None, 'John', 'Doe', 123.45)
     # commit the engineer
