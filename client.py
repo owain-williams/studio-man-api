@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 from typing import Optional
+from db import db
 
-from db import cursor
+cursor = db.cursor()
 
 
 @dataclass
@@ -11,7 +12,7 @@ class Client:
     ContactLastName: str
     PaymentMethods: list[int] = None
 
-    def commit(self) -> None:   
+    def commit(self) -> None:
         '''Add or update the client in the database.'''
         if self.ClientID is None:
             cursor.execute(
