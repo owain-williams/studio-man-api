@@ -1,8 +1,10 @@
 from engineers import Engineer, getallengineers, getengineerbyid
 from decimal import Decimal
+from pytest import approx
 
 
 def test_createengineer():
+    '''Test creating an engineer.'''
     # create an engineer
     test_engineer = Engineer(None, 'John', 'Doe', 123.45)
     # commit the engineer
@@ -17,6 +19,7 @@ def test_createengineer():
 
 
 def test_readengineer():
+    '''Test reading an engineer.'''
     # create an engineer
     test_engineer = Engineer(None, 'John', 'Doe', 123.45)
     # commit the engineer
@@ -45,7 +48,6 @@ def test_updateengineer():
     assert ln_retrieved_engineer.LastName == 'Smith'
     # delete the engineer
     test_engineer.delete()
-    pass
 
 
 def test_deleteengineer():
@@ -58,7 +60,6 @@ def test_deleteengineer():
     # assert that the engineer was deleted
     assert test_engineer.EngineerID not in [
         engineer.EngineerID for engineer in getallengineers()]
-    pass
 
 
 def test_setengineerrate():
@@ -70,7 +71,6 @@ def test_setengineerrate():
     test_engineer.setrate(234.56)
     # assert that the engineer's rate was set
     retrieved_engineer = getengineerbyid(test_engineer.EngineerID)
-    assert retrieved_engineer.Rate == 234.56
+    assert retrieved_engineer.Rate == approx(Decimal('234.56'))
     # delete the engineer
     test_engineer.delete()
-    pass

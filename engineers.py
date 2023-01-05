@@ -18,7 +18,7 @@ class Engineer:
         cursor.execute("UPDATE Engineers SET Rate=%s WHERE EngineerID=%s",
                        (rate, self.EngineerID))
         db.commit()
-        self.Rate = rate
+        self.Rate = Decimal(rate)
         print(f'Engineer {self.FirstName} {self.LastName} rate set to {rate}')
 
     def commit(self) -> None:
