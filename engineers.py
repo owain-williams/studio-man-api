@@ -41,3 +41,9 @@ def getallengineers() -> list[Engineer]:
     '''Get all engineers from the database.'''
     cursor.execute("SELECT * FROM Engineers")
     return [Engineer(*engineer) for engineer in cursor.fetchall()]
+
+
+def getengineerbyid(engineerid: int) -> Engineer:
+    '''Get an engineer from the database.'''
+    cursor.execute("SELECT * FROM Engineers WHERE EngineerID=%s", (engineerid,))
+    return Engineer(*cursor.fetchone())
