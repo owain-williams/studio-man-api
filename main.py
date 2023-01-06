@@ -1,8 +1,14 @@
-from client import Client, get_all_clients
+from flask import Flask
+from flask_restful import Resource, Api
 
-new_client = Client(None, 'John', 'Doe')
+app = Flask(__name__)
+api = Api(app)
 
-new_client.commit()
-print(get_all_clients())
-new_client.delete()
-print(get_all_clients())
+class HelloWorld(Resource):
+    def get(self):
+        return {'hello': 'world'}
+
+api.add_resource(HelloWorld, '/')
+
+if __name__ == '__main__':
+    app.run(debug=True)
