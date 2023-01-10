@@ -1,4 +1,4 @@
-from client import Client, getallclients, getoneclient, getclientsbylastname
+from models.client import Client, getallclients, getoneclient, getclientsbylastname
 
 
 def test_createclient():

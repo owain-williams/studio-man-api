@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 from db import db
+import json
 
 cursor = db.cursor()
 
@@ -36,11 +37,17 @@ class Client:
                        (self.ClientID,))
         print(f'Client {self.ContactFirstName} {self.ContactLastName} deleted')
 
+    def toJSON(self):
+            return json.dumps(self, default=lambda o: o.__dict__, 
+                sort_keys=True, indent=4)
 
 def getallclients() -> list[Client]:
     '''Get all clients from the database.'''
     cursor.execute("SELECT * FROM Clients")
-    return [Client(*client) for client in cursor.fetchall()]
+    allclients = cursor.fetchall()
+    for client in allclients:
+        client = client.toJSON()
+    return allclients
 
 
 def getoneclient(clientid: int) -> Client:
