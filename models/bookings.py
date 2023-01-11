@@ -1,9 +1,9 @@
-# from dataclasses import dataclass
-from typing import Optional, TypedDict
+from dataclasses import dataclass
+from typing import Optional
 from decimal import Decimal
 from db import createbooking
 
-# @dataclass
+@dataclass
 class Booking:
     BookingID: Optional[int]
     Client: int
