@@ -69,6 +69,9 @@ CREATE TABLE `Bookings` (
     `InitialCost` decimal(5,2)  NOT NULL ,
     `DiscountAmount` decimal(5,2) ,
     `ActualCost` decimal(5,2)  NOT NULL ,
+    `Paid` boolean  NOT NULL ,
+    `PaidDate` dateTime  ,
+    `Cancelled` boolean  NOT NULL ,
     PRIMARY KEY (
         `BookingID`
     )
