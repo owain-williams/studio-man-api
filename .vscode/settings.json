@@ -1,3 +1,18 @@
 {
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.typeCheckingMode": "basic",
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "pytest.cdmxz5xjpkpp.eu-west-2.rds.amazonaws.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "studioman-staging",
+            "group": "studioman",
+            "database": "studioman-staging",
+            "username": "AndersDigital"
+        }
+    ]
 }

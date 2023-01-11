@@ -8,8 +8,8 @@ from datetime import datetime
 @dataclass
 class Booking:
     bookingid: Optional[int]
-    client: int
-    room: int
+    client: int  # ClientID
+    room: int  # RoomID
     engineers: Optional[list[int]]
     daySessions: Optional[list[int]]
     initialcost: Decimal
@@ -45,3 +45,19 @@ class Booking:
         self.cancelled = True
         delete_booking(self)
         return self
+
+
+@dataclass
+class FullDayBooking(Booking):
+    pass
+
+
+class PartDayBooking(Booking):
+    start: datetime
+    end: datetime
+
+    def validate_times(self) -> None:
+        if self.start >= self.end:
+            raise ValueError("Start time must be before end time")
+        if self.start.date() != self.end.date():
+            raise ValueError("Start and end times must be on the same day")

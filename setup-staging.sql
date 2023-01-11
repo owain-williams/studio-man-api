@@ -1,4 +1,4 @@
-CREATE DATABASE `studioman-staging`;
+-- CREATE DATABASE `studioman-staging`;
 
 USE `studioman-staging`;
 
